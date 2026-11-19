@@ -1,0 +1,33 @@
+/* Organiser page (/admin). Builds on app.css. */
+.admin { max-width: 64rem; display: flex; flex-direction: column; gap: 20px; }
+#panel { display: flex; flex-direction: column; gap: 20px; }
+.pin { max-width: 26rem; margin: 8vh auto 0; width: 100%; }
+.admin h3 { font-size: 1.0625rem; margin-top: 12px; }
+
+.field { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 12rem; }
+.field__label { font-weight: 700; font-size: 0.9375rem; }
+.field input {
+  min-height: var(--tap); padding: 0 14px;
+  border: 2px solid var(--metal); border-radius: var(--radius-field);
+  font: 1rem var(--font); color: var(--navy); background: var(--white);
+}
+.field input[aria-invalid="true"] { border-color: var(--error); }
+.inline-form { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; margin-top: 8px; }
+.action-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.status { font-weight: 600; min-height: 1.5em; }
+code { font-size: 0.9em; background: var(--paper); padding: 1px 6px; border-radius: 6px; }
+.hint a { color: var(--blue); word-break: break-all; }
+
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0; }
+.stats div { background: var(--paper); border-radius: var(--radius-field); padding: 12px; }
+.stats dt { font-size: 0.875rem; color: var(--ink-soft); font-weight: 600; }
+.stats dd { margin: 0; font-size: 1.75rem; font-weight: 700; overflow-wrap: anywhere; }
+
+.report__head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.report__chart { margin: 8px 0 4px; }
+.table-wrap { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+.table th, .table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.table thead th { font-size: 0.8125rem; color: var(--ink-soft); background: var(--paper); }
+.table tbody th { font-weight: 700; }
+.table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }

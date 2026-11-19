@@ -1,0 +1,94 @@
+/* WCRP Academy brand tokens (same as the values card sort). The brand values are fixed. */
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("../fonts/plus-jakarta-sans-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("../fonts/plus-jakarta-sans-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("../fonts/plus-jakarta-sans-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Brand */
+  --navy: #232C3D;      /* text, header, primary surfaces */
+  --blue: #0069A9;      /* links, secondary buttons */
+  --green: #85E885;     /* main action buttons (navy text), progress, "saved" */
+  --pollen: #F3EA99;    /* "Very important" accent, badges */
+  --cyan: #06FAEA;      /* decoration only */
+  --paper: #F1F1F1;     /* page background */
+  --white: #FFFFFF;     /* cards */
+  --metal: #737D84;     /* borders */
+  --ink-soft: #5E676E;  /* small grey text */
+  --error: #C8102E;     /* error text */
+
+  /* Derived tints: backgrounds only, text on them stays navy */
+  --pollen-tint: #FBF8DC;  /* chosen rows */
+  --blue-tint: #E2EEF6;    /* "Important" accent */
+  --metal-tint: #E3E6E8;   /* "Not important" accent */
+  --green-hover: #6FDC6F;  /* primary button hover (navy text still > 8:1) */
+  --line: #D5D9DC;         /* decorative dividers only; form borders use --metal */
+
+  /* Wheel: one pastel per section, round the colour circle like the reference image (same in all three
+     rings). -strong = the answer (same hue, 3:1+ against the pastel, 4.5:1+ against the white marker);
+     -dim = sections you are not on while answering. Fills only: never use these for text. */
+  --wheel-line: #4A535A;      /* ring lines and spokes: 3:1+ against every pastel */
+  --wheel-rim: #232C3D;
+  --sec-skin: #E9AB92;        --sec-skin-strong: #9D4420;        --sec-skin-dim: #F6DDD3;        --sec-skin-strong-dim: #D3AB9B;
+  --sec-education: #E4C783;   --sec-education-strong: #86671D;   --sec-education-dim: #F4E9CD;   --sec-education-strong-dim: #C9BB99;
+  --sec-ability: #F2EF92;     --sec-ability-strong: #7D7A12;     --sec-ability-dim: #FAF9D3;     --sec-ability-strong-dim: #C5C394;
+  --sec-sexuality: #E2F087;   --sec-sexuality-strong: #6F7D12;   --sec-sexuality-dim: #F3F9CF;   --sec-sexuality-strong-dim: #BEC594;
+  --sec-neuro: #B7EB8B;       --sec-neuro-strong: #488217;       --sec-neuro-dim: #E2F7D1;       --sec-neuro-strong-dim: #ADC797;
+  --sec-mental: #B3EAAF;      --sec-mental-strong: #2A8523;      --sec-mental-dim: #E1F7DF;      --sec-mental-strong-dim: #9FC89C;
+  --sec-body: #B4EDE3;        --sec-body-strong: #208472;        --sec-body-dim: #E1F8F4;        --sec-body-strong-dim: #9BC8C0;
+  --sec-housing: #B4D7E8;     --sec-housing-strong: #2F7698;     --sec-housing-dim: #E1EFF6;     --sec-housing-strong-dim: #A1C1D1;
+  --sec-wealth: #A39BE6;      --sec-wealth-strong: #4333CC;      --sec-wealth-dim: #DAD7F5;      --sec-wealth-strong-dim: #AAA3E8;
+  --sec-language: #D5A0E7;    --sec-language-strong: #8B2BAB;    --sec-language-dim: #EED9F5;    --sec-language-strong-dim: #CBA0D9;
+  --sec-gender: #E5C0EA;      --sec-gender-strong: #A93DB8;      --sec-gender-dim: #F5E6F7;      --sec-gender-strong-dim: #D8A8DF;
+  --sec-citizenship: #ECB8C8; --sec-citizenship-strong: #BD335D; --sec-citizenship-dim: #F7E3E9; --sec-citizenship-strong-dim: #E1A3B6;
+  /* Fallback when no section is set */
+  --sec: var(--blue-tint); --sec-strong: var(--blue); --sec-dim: var(--paper); --sec-strong-dim: #8DB6D6;
+
+  /* Charts (band strip, score scale) */
+  --band-low: #E3E6E8;
+  --band-mid: #B4D2EA;
+  --band-high: #6FA6D1;
+
+  /* Type */
+  --font: "Plus Jakarta Sans", Arial, sans-serif;
+
+  /* Shape and spacing */
+  --radius-card: 16px;
+  --radius-field: 12px;
+  --radius-pill: 999px;
+  --tap: 48px;
+  --gutter: 16px;
+  --shadow-card: 0 1px 2px rgb(35 44 61 / 0.06), 0 6px 20px rgb(35 44 61 / 0.06);
+}
+
+/* data-sec="<section key>" sets --sec, --sec-strong, --sec-dim, --sec-strong-dim for that section */
+[data-sec="skin"] { --sec: var(--sec-skin); --sec-strong: var(--sec-skin-strong); --sec-dim: var(--sec-skin-dim); --sec-strong-dim: var(--sec-skin-strong-dim); }
+[data-sec="education"] { --sec: var(--sec-education); --sec-strong: var(--sec-education-strong); --sec-dim: var(--sec-education-dim); --sec-strong-dim: var(--sec-education-strong-dim); }
+[data-sec="ability"] { --sec: var(--sec-ability); --sec-strong: var(--sec-ability-strong); --sec-dim: var(--sec-ability-dim); --sec-strong-dim: var(--sec-ability-strong-dim); }
+[data-sec="sexuality"] { --sec: var(--sec-sexuality); --sec-strong: var(--sec-sexuality-strong); --sec-dim: var(--sec-sexuality-dim); --sec-strong-dim: var(--sec-sexuality-strong-dim); }
+[data-sec="neuro"] { --sec: var(--sec-neuro); --sec-strong: var(--sec-neuro-strong); --sec-dim: var(--sec-neuro-dim); --sec-strong-dim: var(--sec-neuro-strong-dim); }
+[data-sec="mental"] { --sec: var(--sec-mental); --sec-strong: var(--sec-mental-strong); --sec-dim: var(--sec-mental-dim); --sec-strong-dim: var(--sec-mental-strong-dim); }
+[data-sec="body"] { --sec: var(--sec-body); --sec-strong: var(--sec-body-strong); --sec-dim: var(--sec-body-dim); --sec-strong-dim: var(--sec-body-strong-dim); }
+[data-sec="housing"] { --sec: var(--sec-housing); --sec-strong: var(--sec-housing-strong); --sec-dim: var(--sec-housing-dim); --sec-strong-dim: var(--sec-housing-strong-dim); }
+[data-sec="wealth"] { --sec: var(--sec-wealth); --sec-strong: var(--sec-wealth-strong); --sec-dim: var(--sec-wealth-dim); --sec-strong-dim: var(--sec-wealth-strong-dim); }
+[data-sec="language"] { --sec: var(--sec-language); --sec-strong: var(--sec-language-strong); --sec-dim: var(--sec-language-dim); --sec-strong-dim: var(--sec-language-strong-dim); }
+[data-sec="gender"] { --sec: var(--sec-gender); --sec-strong: var(--sec-gender-strong); --sec-dim: var(--sec-gender-dim); --sec-strong-dim: var(--sec-gender-strong-dim); }
+[data-sec="citizenship"] { --sec: var(--sec-citizenship); --sec-strong: var(--sec-citizenship-strong); --sec-dim: var(--sec-citizenship-dim); --sec-strong-dim: var(--sec-citizenship-strong-dim); }

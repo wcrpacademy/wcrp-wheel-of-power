@@ -1,0 +1,105 @@
+# Test, then upload the site over SFTP (Infomaniak web hosting, behind Cloudflare).
+# Same pattern and secret names as the values card sort. Runs on every push to main, or by hand.
+# Host: wheelpower.wcrp-academy.org (Ken, 19 Nov 2026).
+#
+# Repository secrets (Settings → Secrets and variables → Actions). Values never go in the repo:
+#   SFTP_HOST, SFTP_PORT (usually 22), SFTP_USER, SFTP_PASSWORD,
+#   SFTP_PATH  the subdomain's folder, relative to the login folder, no leading slash: sites/wheelpower.wcrp-academy.org
+# Until SFTP_HOST is set, the deploy job is skipped (tests still run).
+
+name: Test and deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
+        env:
+          CI: "1"
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-results
+          path: test-results/
+          retention-days: 7
+
+  deploy:
+    needs: test
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    env:
+      SFTP_HOST: ${{ secrets.SFTP_HOST }}
+      SFTP_PORT: ${{ secrets.SFTP_PORT }}
+      SFTP_USER: ${{ secrets.SFTP_USER }}
+      LFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+      SFTP_PATH: ${{ secrets.SFTP_PATH }}
+    steps:
+      # Pasted secrets often carry quotes, spaces or a line break: strip them from host, user, port and path.
+      - name: Check the SFTP secrets are set
+        id: secrets
+        run: |
+          clean() { python3 -c 'import sys; print(sys.argv[1].strip(" \t\r\n ​﻿\"\x27`“”‘’«»"), end="")' "$1"; }
+          SFTP_HOST=$(clean "$SFTP_HOST")
+          SFTP_USER=$(clean "$SFTP_USER")
+          SFTP_PORT=$(clean "$SFTP_PORT")
+          SFTP_PATH=$(clean "$SFTP_PATH")
+          if [ -z "$SFTP_HOST" ] || [ -z "$SFTP_USER" ] || [ -z "$LFTP_PASSWORD" ] || [ -z "$SFTP_PATH" ]; then
+            echo "SFTP secrets are not set yet: skipping the upload."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          elif printf '%s' "$SFTP_PATH" | python3 -c 'import sys; p=sys.stdin.read(); sys.exit(0 if all(c.isascii() and c.isprintable() and c not in "\"\x27` " for c in p) else 1)'; then
+            {
+              echo "DEPLOY_HOST=$SFTP_HOST"
+              echo "DEPLOY_USER=$SFTP_USER"
+              echo "DEPLOY_PORT=${SFTP_PORT:-22}"
+              echo "DEPLOY_PATH=$SFTP_PATH"
+            } >> "$GITHUB_ENV"
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::SFTP_PATH contains quotes, spaces or unusual characters. Retype it by hand: sites/wheelpower.wcrp-academy.org"
+            exit 1
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.secrets.outputs.ready == 'true'
+
+      # Allowlist: only what the pages load. Never docs, tests, scripts, apps-script/ or dotfiles.
+      - name: Build the upload folder
+        if: steps.secrets.outputs.ready == 'true'
+        run: |
+          mkdir dist
+          cp index.html live.html admin.html config.js dist/
+          cp -r css js fonts img data dist/
+          find dist -name '.*' -print -delete
+          echo "Uploading:" && find dist -type f | sort
+
+      - name: Upload over SFTP
+        if: steps.secrets.outputs.ready == 'true'
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+          lftp -u "$DEPLOY_USER" --env-password -p "$DEPLOY_PORT" "sftp://$DEPLOY_HOST" -e "
+            set cmd:fail-exit yes;
+            set sftp:auto-confirm yes;
+            set net:max-retries 3;
+            mirror --reverse --no-perms --verbose dist/ $DEPLOY_PATH;
+            bye"

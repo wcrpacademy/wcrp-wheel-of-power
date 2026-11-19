@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#232C3D">
+  <title>Organiser · Wheel of Power</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/charts.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <script src="config.js"></script>
+  <script type="module" src="js/admin.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <span class="brand"><img class="brand__logo" src="img/academy-logo-light.png" alt="WCRP Academy" width="111" height="40"></span>
+      <p class="topbar__progress">Organiser</p>
+    </div>
+  </header>
+
+  <main class="main admin" id="main">
+    <!-- PIN -->
+    <form class="card pin" id="pin-form" novalidate>
+      <h1>Organiser page</h1>
+      <p>Enter the organiser PIN.</p>
+      <label class="field">
+        <span class="field__label">PIN</span>
+        <input type="password" id="pin" inputmode="numeric" autocomplete="off" required aria-describedby="pin-error">
+      </label>
+      <p class="field-error" id="pin-error" hidden></p>
+      <button type="submit" class="btn btn--primary">Open</button>
+      <p class="hint">The Apps Script checks the PIN, and again for every download and deletion.</p>
+    </form>
+
+    <div id="panel" hidden>
+      <h1>Wheel of Power: organiser</h1>
+
+      <section class="card" aria-labelledby="h-session">
+        <h2 id="h-session">Session</h2>
+        <dl class="stats">
+          <div><dt>Session code</dt><dd id="session-code"></dd></div>
+          <div><dt>Joined</dt><dd id="stat-joined">–</dd></div>
+          <div><dt>Finished</dt><dd id="stat-submitted">–</dd></div>
+        </dl>
+        <form class="inline-form" id="session-form">
+          <label class="field">
+            <span class="field__label">Show another session on this device</span>
+            <input type="text" id="session-input" maxlength="40" autocomplete="off" aria-describedby="session-help">
+          </label>
+          <button type="submit" class="btn btn--ghost">Use this session</button>
+        </form>
+        <p class="hint" id="session-help">Changes what /live and this page show on this device. Participants use <code>session</code> in config.js, or a link with the code: <a id="session-link" href="#"></a></p>
+        <button type="button" class="btn btn--link" id="session-reset" hidden>Back to the config.js session</button>
+      </section>
+
+      <section class="card" aria-labelledby="h-actions">
+        <h2 id="h-actions">Data</h2>
+        <div class="action-row">
+          <button type="button" class="btn btn--secondary" id="csv-btn">Download anonymised CSV</button>
+          <a class="btn btn--ghost" id="sheet-link" target="_blank" rel="noopener" hidden>Open the Sheet</a>
+          <a class="btn btn--ghost" href="live.html" id="live-link">Open /live</a>
+        </div>
+        <p class="hint">The CSV has the section answers, n, points, % and band for each person. No pid, no time.</p>
+        <p class="status" id="csv-status" role="status"></p>
+
+        <form class="inline-form" id="delete-form">
+          <label class="field">
+            <span class="field__label">Delete by withdrawal code</span>
+            <input type="text" id="delete-code" maxlength="6" autocomplete="off" spellcheck="false" aria-describedby="delete-help">
+          </label>
+          <button type="submit" class="btn btn--danger">Delete</button>
+        </form>
+        <p class="hint" id="delete-help">The 6-character code a participant got on their result screen.</p>
+        <p class="status" id="delete-status" role="status"></p>
+      </section>
+
+      <section class="card" aria-labelledby="h-phone">
+        <h2 id="h-phone">This phone</h2>
+        <p>Clears this phone’s answers, its draft and anything waiting to send, so it can be used for a new test run.</p>
+        <div class="action-row"><button type="button" class="btn btn--ghost" id="reset-phone">Reset this phone</button></div>
+        <p class="status" id="reset-status" role="status"></p>
+      </section>
+
+      <section class="card report" aria-labelledby="h-report">
+        <div class="report__head">
+          <h2 id="h-report">Report</h2>
+          <button type="button" class="btn btn--ghost" id="report-btn">Load report</button>
+        </div>
+        <p class="hint">The headline numbers for this session, worked out from the same rows as the CSV with the same scoring as /live. Rescaled (POMP): ring 1 = 0%, ring 3 = 100%.</p>
+        <p class="status" id="report-status" role="status"></p>
+        <div id="report" hidden>
+          <h3>Headline</h3>
+          <table class="table" id="t-headline"><thead><tr><th scope="col">Measure</th><th scope="col">Value</th><th scope="col">How it’s worked out</th></tr></thead><tbody></tbody></table>
+          <h3>Bands</h3>
+          <table class="table" id="t-bands"><thead><tr><th scope="col">Band</th><th scope="col" class="num">People</th></tr></thead><tbody></tbody></table>
+          <div class="report__chart" id="r-bandstrip"></div>
+          <h3>Per section</h3>
+          <div class="table-wrap" tabindex="0" role="region" aria-label="Per-section table (scrolls sideways)">
+            <table class="table" id="t-sections"><thead><tr><th scope="col">Section</th><th scope="col" class="num">Mean ring</th><th scope="col" class="num">Rescaled</th><th scope="col" class="num">n</th><th scope="col" class="num">N/A</th><th scope="col" class="num">Ring 1</th><th scope="col" class="num">1.5</th><th scope="col" class="num">2</th><th scope="col" class="num">2.5</th><th scope="col" class="num">3</th></tr></thead><tbody></tbody></table>
+          </div>
+          <div class="report__chart" id="r-secbars"></div>
+          <p class="hint">Report the per-section results first; the overall % is a summary only. The wheel is a reflection tool, not a validated instrument.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <dialog class="dialog" id="confirm-dialog" aria-labelledby="confirm-text">
+    <p id="confirm-text"></p>
+    <div class="dialog__actions">
+      <button type="button" class="btn btn--ghost" id="confirm-cancel">Cancel</button>
+      <button type="button" class="btn btn--danger" id="confirm-ok">Yes</button>
+    </div>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,14 @@
+node_modules/
+results.csv
+joins.csv
+*.local.*
+.DS_Store
+
+# Local secrets (never commit; keep .env.example)
+.env
+.env.*
+!.env.example
+
+# Test output
+test-results/
+playwright-report/

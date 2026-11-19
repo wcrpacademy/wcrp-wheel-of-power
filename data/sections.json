@@ -1,0 +1,126 @@
+{
+  "version": "wheel-v1",
+  "_note": "Section order and keys are fixed (EXECUTION_PLAN.md §2): same order everywhere, clockwise from the top. Ring 1 = outer ring (marginalised), ring 3 = centre ring (closest to power). English ring wording follows the categories on the reference wheel (Sylvia Duckworth, adapted from ccrweb.ca), from the image Ken shared on 19 Nov 2026. French is an unofficial translation: a French speaker must check it. 'short' is the label drawn around the wheel and in charts.",
+  "sections": [
+    {
+      "key": "skin",
+      "label": { "en": "Skin colour", "fr": "Couleur de peau" },
+      "short": { "en": "Skin colour", "fr": "Peau" },
+      "rings": {
+        "1": { "en": "Dark", "fr": "Foncée" },
+        "2": { "en": "Different shades", "fr": "Nuances diverses" },
+        "3": { "en": "White", "fr": "Blanche" }
+      }
+    },
+    {
+      "key": "education",
+      "label": { "en": "Formal education", "fr": "Éducation formelle" },
+      "short": { "en": "Education", "fr": "Éducation" },
+      "rings": {
+        "1": { "en": "Elementary education", "fr": "École primaire" },
+        "2": { "en": "High school education", "fr": "École secondaire" },
+        "3": { "en": "Post-secondary", "fr": "Études supérieures" }
+      }
+    },
+    {
+      "key": "ability",
+      "label": { "en": "Ability", "fr": "Capacités" },
+      "short": { "en": "Ability", "fr": "Capacités" },
+      "rings": {
+        "1": { "en": "Significant disability", "fr": "Handicap important" },
+        "2": { "en": "Some disability", "fr": "Un certain handicap" },
+        "3": { "en": "Able-bodied", "fr": "Sans handicap" }
+      }
+    },
+    {
+      "key": "sexuality",
+      "label": { "en": "Sexuality", "fr": "Sexualité" },
+      "short": { "en": "Sexuality", "fr": "Sexualité" },
+      "rings": {
+        "1": { "en": "Lesbian, bi, pan, asexual", "fr": "Lesbienne, bi, pan, asexuel·le" },
+        "2": { "en": "Gay men", "fr": "Hommes gays" },
+        "3": { "en": "Heterosexual", "fr": "Hétérosexuel·le" }
+      }
+    },
+    {
+      "key": "neuro",
+      "label": { "en": "Neurodiversity", "fr": "Neurodiversité" },
+      "short": { "en": "Neurodiversity", "fr": "Neurodiversité" },
+      "rings": {
+        "1": { "en": "Significant neurodivergence", "fr": "Neurodivergence importante" },
+        "2": { "en": "Neuroatypical", "fr": "Neuroatypique" },
+        "3": { "en": "Neurotypical", "fr": "Neurotypique" }
+      }
+    },
+    {
+      "key": "mental",
+      "label": { "en": "Mental health", "fr": "Santé mentale" },
+      "short": { "en": "Mental health", "fr": "Santé mentale" },
+      "rings": {
+        "1": { "en": "Vulnerable", "fr": "Vulnérable" },
+        "2": { "en": "Mostly stable", "fr": "Plutôt stable" },
+        "3": { "en": "Robust", "fr": "Solide" }
+      }
+    },
+    {
+      "key": "body",
+      "label": { "en": "Body size", "fr": "Corpulence" },
+      "short": { "en": "Body size", "fr": "Corpulence" },
+      "rings": {
+        "1": { "en": "Large", "fr": "Forte" },
+        "2": { "en": "Average", "fr": "Moyenne" },
+        "3": { "en": "Slim", "fr": "Mince" }
+      }
+    },
+    {
+      "key": "housing",
+      "label": { "en": "Housing", "fr": "Logement" },
+      "short": { "en": "Housing", "fr": "Logement" },
+      "rings": {
+        "1": { "en": "Homeless", "fr": "Sans abri" },
+        "2": { "en": "Sheltered or renting", "fr": "Hébergé·e ou locataire" },
+        "3": { "en": "Owns property", "fr": "Propriétaire" }
+      }
+    },
+    {
+      "key": "wealth",
+      "label": { "en": "Wealth", "fr": "Richesse" },
+      "short": { "en": "Wealth", "fr": "Richesse" },
+      "rings": {
+        "1": { "en": "Poor", "fr": "Pauvre" },
+        "2": { "en": "Middle class", "fr": "Classe moyenne" },
+        "3": { "en": "Rich", "fr": "Riche" }
+      }
+    },
+    {
+      "key": "language",
+      "label": { "en": "Language", "fr": "Langue" },
+      "short": { "en": "Language", "fr": "Langue" },
+      "rings": {
+        "1": { "en": "Non-English monolingual", "fr": "Monolingue, pas en anglais" },
+        "2": { "en": "Learned English", "fr": "Anglais appris" },
+        "3": { "en": "English", "fr": "Anglais langue maternelle" }
+      }
+    },
+    {
+      "key": "gender",
+      "label": { "en": "Gender", "fr": "Genre" },
+      "short": { "en": "Gender", "fr": "Genre" },
+      "rings": {
+        "1": { "en": "Trans, intersex, non-binary", "fr": "Trans, intersexe, non binaire" },
+        "2": { "en": "Cisgender woman", "fr": "Femme cisgenre" },
+        "3": { "en": "Cisgender man", "fr": "Homme cisgenre" }
+      }
+    },
+    {
+      "key": "citizenship",
+      "label": { "en": "Citizenship", "fr": "Citoyenneté" },
+      "short": { "en": "Citizenship", "fr": "Citoyenneté" },
+      "rings": {
+        "1": { "en": "Undocumented", "fr": "Sans papiers" },
+        "2": { "en": "Documented", "fr": "Avec papiers" },
+        "3": { "en": "Citizen", "fr": "Citoyen·ne" }
+      }
+    }
+  ]
+}

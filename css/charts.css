@@ -1,0 +1,52 @@
+/* Group charts (js/charts.js): band strip and section bars, light (admin report) and dark (projector). */
+.bandstrip, .secbars { display: block; width: 100%; height: auto; font-family: var(--font); }
+
+.bs-zone--low { fill: var(--band-low); }
+.bs-zone--mid { fill: var(--band-mid); }
+.bs-zone--high { fill: var(--band-high); }
+.bs-cut { stroke: var(--navy); stroke-width: 2; stroke-dasharray: 5 4; }
+.bs-axis { stroke: var(--navy); stroke-width: 2; }
+.bs-tick { stroke: var(--navy); stroke-width: 2; }
+.bs-tick-label { fill: var(--ink-soft); font-size: 18px; text-anchor: middle; }
+.bs-count { fill: var(--navy); font-size: 34px; font-weight: 700; text-anchor: middle; }
+.bs-zone-label { fill: var(--ink-soft); font-size: 17px; font-weight: 600; text-anchor: middle; }
+.bs-dot { fill: var(--blue); stroke: var(--white); stroke-width: 2.5; }
+.bs-group { stroke: var(--navy); stroke-width: 3; }
+.bs-group-label { fill: var(--navy); font-size: 19px; font-weight: 700; }
+
+.bandstrip--dark .bs-zone--low { fill: rgb(241 241 241 / 0.07); }
+.bandstrip--dark .bs-zone--mid { fill: rgb(241 241 241 / 0.15); }
+.bandstrip--dark .bs-zone--high { fill: rgb(241 241 241 / 0.26); }
+.bandstrip--dark .bs-cut,
+.bandstrip--dark .bs-axis,
+.bandstrip--dark .bs-tick { stroke: var(--paper); }
+.bandstrip--dark .bs-tick-label,
+.bandstrip--dark .bs-zone-label { fill: #C9CED4; }
+.bandstrip--dark .bs-count,
+.bandstrip--dark .bs-group-label { fill: var(--white); }
+.bandstrip--dark .bs-dot { fill: var(--green); stroke: var(--navy); }
+.bandstrip--dark .bs-group { stroke: var(--cyan); }
+
+.sb-grid { stroke: var(--line); stroke-width: 1; }
+.sb-mid { stroke: var(--ink-soft); stroke-width: 2; stroke-dasharray: 5 4; }
+.sb-mid-label { fill: var(--ink-soft); font-size: 15px; text-anchor: middle; }
+.sb-tick { fill: var(--ink-soft); font-size: 16px; text-anchor: middle; }
+.sb-label { fill: var(--navy); font-size: 19px; font-weight: 600; text-anchor: end; dominant-baseline: central; }
+.sb-bar { fill: #B9C2CA; }
+.sb-bar.is-extreme { fill: var(--blue); }
+.sb-value { fill: var(--navy); font-size: 19px; font-weight: 700; dominant-baseline: central; }
+.sb-value.is-extreme { fill: var(--blue); }
+.sb-n { fill: var(--ink-soft); font-size: 16px; text-anchor: end; dominant-baseline: central; }
+.sb-none { fill: var(--ink-soft); font-size: 16px; font-style: italic; dominant-baseline: central; }
+
+.secbars--dark .sb-grid { stroke: rgb(241 241 241 / 0.15); }
+.secbars--dark .sb-mid { stroke: #C9CED4; }
+.secbars--dark .sb-mid-label,
+.secbars--dark .sb-tick,
+.secbars--dark .sb-n,
+.secbars--dark .sb-none { fill: #C9CED4; }
+.secbars--dark .sb-label,
+.secbars--dark .sb-value { fill: var(--white); }
+.secbars--dark .sb-bar { fill: #6E7D93; }
+.secbars--dark .sb-bar.is-extreme { fill: var(--green); }
+.secbars--dark .sb-value.is-extreme { fill: var(--green); }

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#232C3D">
+  <title>Live · Wheel of Power</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="preload" href="fonts/plus-jakarta-sans-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/charts.css">
+  <link rel="stylesheet" href="css/live.css">
+  <script src="config.js"></script>
+  <script type="module" src="js/live.js"></script>
+</head>
+<body>
+  <main class="live">
+    <header class="live__head">
+      <div class="live__title">
+        <img class="live__logo" src="img/academy-logo-light.png" alt="WCRP Academy" width="133" height="48">
+        <div>
+          <h1>Wheel of Power</h1>
+          <p class="live__sub" id="live-sub"></p>
+        </div>
+      </div>
+      <dl class="live__counts">
+        <div class="count"><dt>Joined</dt><dd id="joined">–</dd></div>
+        <div class="count"><dt>Finished</dt><dd id="submitted">–</dd></div>
+      </dl>
+    </header>
+
+    <section class="live__body" aria-live="polite">
+      <div id="waiting" class="live__waiting" hidden>
+        <p class="live__big">Results appear once <span id="min-group">5</span> people have finished.</p>
+        <p class="live__join">Join at <strong id="join-url"></strong></p>
+      </div>
+
+      <div id="results" hidden>
+        <div class="live__headline">
+          <p><span class="live__label">Group closeness to power</span><strong id="group-pct">–</strong></p>
+          <p class="live__headnote" id="headnote"></p>
+        </div>
+        <div id="view-bands" class="live__chart">
+          <div id="bandstrip"></div>
+          <p class="live__legend">One dot per person who answered at least 9 sections. Rescaled: outer ring 0%, centre 100%.</p>
+        </div>
+        <div id="view-sections" class="live__chart" hidden>
+          <div id="secbars"></div>
+          <p class="live__legend">Group average per section. n = people who answered that section (the rest chose “not applicable”).</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="live__foot">
+      <div class="live__toggle" role="group" aria-label="View">
+        <button type="button" class="toggle" id="show-bands" aria-pressed="true">Bands</button>
+        <button type="button" class="toggle" id="show-sections" aria-pressed="false">Sections</button>
+      </div>
+      <p class="live__status" id="status" role="status"></p>
+      <p class="live__credit">Wheel adapted from Sylvia Duckworth’s Wheel of Power/Privilege (adapted from ccrweb.ca).</p>
+    </footer>
+  </main>
+</body>
+</html>

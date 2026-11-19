@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#232C3D">
+  <title>Wheel of Power · WCRP Academy</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="preload" href="fonts/plus-jakarta-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/plus-jakarta-sans-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/wheel.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/site.css">
+  <script src="config.js"></script>
+  <script type="module" src="js/app.js"></script>
+</head>
+<body data-step="loading">
+  <svg xmlns="http://www.w3.org/2000/svg" hidden>
+    <symbol id="i-back" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M12 5l-7 7 7 7"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></g></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2.2" fill="currentColor"/><circle cx="15" cy="12" r="2.2" fill="currentColor"/><circle cx="11" cy="18" r="2.2" fill="currentColor"/></g></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5v-3a4 4 0 0 1 8 0v3"/></g></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/></g></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M6 12h12"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></g></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></g></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></g></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 5h6a3.5 3.5 0 0 1 3.5 3.5V20a2.5 2.5 0 0 0-2.5-2.5h-7z"/><path d="M21.5 5h-6A3.5 3.5 0 0 0 12 8.5V20a2.5 2.5 0 0 1 2.5-2.5h7z"/></g></symbol>
+    <!-- Flags for the language menu: add a symbol "flag-<code>" for each new language in config.js -->
+    <symbol id="flag-en" viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice"><path fill="#012169" d="M0 0h60v30H0z"/><path stroke="#fff" stroke-width="6" d="M0 0l60 30M60 0L0 30"/><path stroke="#C8102E" stroke-width="2" d="M0 0l60 30M60 0L0 30"/><path stroke="#fff" stroke-width="10" d="M30 0v30M0 15h60"/><path stroke="#C8102E" stroke-width="6" d="M30 0v30M0 15h60"/></symbol>
+    <symbol id="flag-fr" viewBox="0 0 3 2"><path fill="#002654" d="M0 0h1v2H0z"/><path fill="#fff" d="M1 0h1v2H1z"/><path fill="#CE1126" d="M2 0h1v2H2z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M3.5 9h4v12h-4zM5.5 3a2.3 2.3 0 1 1 0 4.6 2.3 2.3 0 0 1 0-4.6zM10 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3.1-1.9-3.1s-2.2 1.5-2.2 3V21h-4z"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.3v3.2h2.8V22z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></g><circle cx="17.3" cy="6.7" r="1.3" fill="currentColor"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M22.5 7.2a2.7 2.7 0 0 0-1.9-1.9C18.9 4.8 12 4.8 12 4.8s-6.9 0-8.6.5a2.7 2.7 0 0 0-1.9 1.9C1 8.9 1 12 1 12s0 3.1.5 4.8a2.7 2.7 0 0 0 1.9 1.9c1.7.5 8.6.5 8.6.5s6.9 0 8.6-.5a2.7 2.7 0 0 0 1.9-1.9c.5-1.7.5-4.8.5-4.8s0-3.1-.5-4.8zM9.8 15.1V8.9l5.4 3.1z"/></symbol>
+  </svg>
+
+  <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <span class="brand"><img class="brand__logo" src="img/academy-logo-light.png" alt="WCRP Academy" width="111" height="40"></span>
+      <div class="topbar__end">
+        <p class="topbar__progress" id="progress-text" hidden></p>
+        <!-- Intro, Result and Deep analytics: icon only on phones (the name stays for screen readers) -->
+        <a class="header-btn" id="official-link" href="https://wcrp-academy.org/" target="_blank" rel="noopener" hidden>
+          <span class="header-btn__text" data-i18n="officialSite">Official site</span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-external"/></svg><span class="visually-hidden" data-i18n="officialSiteNote"> (wcrp-academy.org, opens in a new tab)</span>
+        </a>
+        <!-- Language: a flag button that opens the list of languages in config.js. Every screen. -->
+        <div class="lang" id="lang" hidden>
+          <button type="button" class="lang__btn" id="lang-btn" aria-expanded="false" aria-controls="lang-menu">
+            <svg class="flag" aria-hidden="true" focusable="false"><use id="lang-btn-flag" href="#flag-en"/></svg>
+            <svg class="icon lang__chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg>
+            <span class="visually-hidden" id="lang-btn-text"></span>
+          </button>
+          <ul class="lang__menu" id="lang-menu" role="list" hidden></ul>
+        </div>
+      </div>
+    </div>
+    <div class="progress" id="progress" hidden><div class="progress__bar" id="progress-bar"></div></div>
+  </header>
+
+  <main id="main" class="main">
+    <p class="loading" data-screen="loading" data-i18n="loading">Loading…</p>
+
+    <!-- 1. Intro and consent -->
+    <section class="screen screen--intro" data-screen="intro" hidden aria-labelledby="intro-title">
+      <div class="intro-hero">
+        <div class="intro-hero__wheel" id="intro-wheel"></div>
+        <div class="intro-hero__text">
+          <p class="kicker" id="event-name"></p>
+          <h1 id="intro-title" tabindex="-1" data-i18n="intro.title">Wheel of Power and Privilege</h1>
+          <p class="lead" data-i18n="intro.lead"></p>
+          <p class="meta"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span data-i18n="intro.meta"></span></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 data-i18n="intro.how">How it works</h2>
+        <ol class="steps">
+          <li data-i18n="intro.step1"></li>
+          <li data-i18n="intro.step2"></li>
+          <li data-i18n="intro.step3"></li>
+          <li data-i18n="intro.step4"></li>
+        </ol>
+      </div>
+
+      <form class="card card--consent" id="consent-form" novalidate>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg><span data-i18n="consent.title">Before you start</span></h2>
+        <p data-i18n="consent.p1"></p>
+        <p data-i18n="consent.p2"></p>
+        <p data-i18n="consent.p3"></p>
+        <p data-i18n="consent.p4"></p>
+        <label class="check">
+          <input type="checkbox" id="consent" name="consent" aria-describedby="consent-error">
+          <span class="check__box" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></span>
+          <span data-i18n="consent.check">I have read this and agree to take part.</span>
+        </label>
+        <p class="field-error" id="consent-error" hidden><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span data-i18n="consent.error"></span></p>
+        <p class="note" id="no-store" hidden data-i18n="intro.noStore"></p>
+        <div class="actions">
+          <button type="submit" class="btn btn--primary btn--wide" id="start-btn"><span data-i18n="intro.start">Start</span><svg class="icon" aria-hidden="true"><use href="#i-next"/></svg></button>
+          <button type="button" class="btn btn--link" id="start-over" hidden data-i18n="intro.startOver">Start over</button>
+        </div>
+      </form>
+      <p class="credit" data-i18n="credit"></p>
+    </section>
+
+    <!-- 2. One question per section (×12) -->
+    <section class="screen screen--question" data-screen="question" hidden aria-labelledby="q-title">
+      <div class="q-layout">
+        <div class="q-wheel">
+          <div class="q-head">
+            <h1 id="q-title" tabindex="-1"></h1>
+            <p class="q-prompt" data-i18n="q.prompt"></p>
+          </div>
+          <div class="wheel-crop"><div class="wheel-wrap wheel-wrap--question" id="q-wheel"></div></div>
+          <p class="q-hint" data-i18n="q.hint"></p>
+        </div>
+        <div class="q-options">
+          <fieldset class="options" id="q-options" aria-describedby="q-error">
+            <legend class="visually-hidden" id="q-legend"></legend>
+            <div class="options__rings" id="q-rings"></div>
+            <div class="options__na" id="q-na"></div>
+          </fieldset>
+          <p class="field-error" id="q-error" hidden><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span data-i18n="q.need"></span></p>
+        </div>
+      </div>
+      <div class="bar">
+        <div class="bar__inner">
+          <button type="button" class="btn btn--ghost" id="q-back"><svg class="icon" aria-hidden="true"><use href="#i-back"/></svg><span data-i18n="q.back">Back</span></button>
+          <button type="button" class="btn btn--primary" id="q-next"><span id="q-next-text" data-i18n="q.next">Next</span><svg class="icon" aria-hidden="true"><use href="#i-next"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Review -->
+    <section class="screen screen--review" data-screen="review" hidden aria-labelledby="review-title">
+      <h1 id="review-title" tabindex="-1" data-i18n="review.title">Check your answers</h1>
+      <p class="lead" data-i18n="review.lead"></p>
+      <div class="review-layout">
+        <div class="wheel-wrap wheel-wrap--review" id="review-wheel"></div>
+        <ol class="review-list" id="review-list"></ol>
+      </div>
+      <div class="bar">
+        <div class="bar__inner bar__inner--stack">
+          <p class="bar__note" id="review-note" data-i18n="review.final"></p>
+          <button type="button" class="btn btn--primary btn--wide" id="submit-btn"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="review.submit">Send my answers</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Result: Your wheel (option A) -->
+    <section class="screen screen--result" data-screen="result" hidden aria-labelledby="result-title">
+      <h1 id="result-title" tabindex="-1" data-i18n="result.title">Your wheel</h1>
+      <p class="lead" data-i18n="result.lead"></p>
+      <div class="result-layout">
+        <figure class="result-figure">
+          <div class="wheel-wrap wheel-wrap--result" id="result-wheel"></div>
+          <figcaption class="legend">
+            <span class="legend__item"><span class="swatch swatch--you" aria-hidden="true"></span><span data-i18n="legend.you"></span></span>
+            <span class="legend__item"><span class="swatch swatch--na" aria-hidden="true"></span><span data-i18n="legend.na"></span></span>
+            <span class="legend__item legend__item--rule"><span class="swatch swatch--hub" aria-hidden="true"></span><span data-i18n="legend.centre"></span></span>
+          </figcaption>
+        </figure>
+        <div class="result-side">
+          <div class="score card" id="score">
+            <p class="score__label" data-i18n="result.closeness">Closeness to power</p>
+            <p class="score__value" id="score-value"></p>
+            <p class="band-chip" id="score-band"></p>
+            <p class="score__few" id="score-few" hidden data-i18n="result.tooFew"></p>
+            <div class="score__scale" id="score-scale" aria-hidden="true"></div>
+            <p class="score__n" id="score-n"></p>
+            <p class="score__na" id="score-na" hidden></p>
+          </div>
+          <a class="btn btn--secondary btn--wide" id="deep-btn" href="#deep"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg><span data-i18n="result.deep">Deep analytics</span></a>
+          <p class="hint" data-i18n="result.deepHint"></p>
+          <p class="reflect" data-i18n="result.reflect"></p>
+          <div class="card card--quiet code-card">
+            <p class="code-card__label" data-i18n="result.code">Your withdrawal code</p>
+            <p class="code-card__code" id="withdraw-code"></p>
+            <p class="code-card__help" data-i18n="result.codeHelp"></p>
+          </div>
+          <p class="save" id="save-status" role="status" aria-live="polite"></p>
+          <button type="button" class="btn btn--link" id="save-retry" hidden data-i18n="save.retry">Try again</button>
+          <button type="button" class="btn btn--ghost" id="retake-btn" hidden><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg><span data-i18n="result.retake">Change my answers</span></button>
+        </div>
+      </div>
+      <p class="credit" data-i18n="credit"></p>
+    </section>
+
+    <!-- 5. Deep analytics (option C): section dot plot -->
+    <section class="screen screen--deep" data-screen="deep" hidden aria-labelledby="deep-title">
+      <button type="button" class="btn btn--link btn--back" id="deep-back"><svg class="icon" aria-hidden="true"><use href="#i-back"/></svg><span data-i18n="deep.back">Back to your wheel</span></button>
+      <h1 id="deep-title" tabindex="-1" data-i18n="deep.title">Deep analytics</h1>
+      <p class="lead" data-i18n="deep.lead"></p>
+      <div class="card dotplot-card">
+        <div class="dotplot-legend">
+          <span class="legend__item"><span class="swatch swatch--dot" aria-hidden="true"></span><span data-i18n="deep.you"></span></span>
+          <span class="legend__item" id="legend-group"><span class="swatch swatch--tick" aria-hidden="true"></span><span data-i18n="deep.group"></span></span>
+        </div>
+        <p class="group-status" id="group-status" role="status" aria-live="polite"></p>
+        <button type="button" class="btn btn--link" id="group-retry" hidden data-i18n="deep.retry">Try again</button>
+        <div class="dotplot" id="dotplot"></div>
+      </div>
+      <p class="credit" data-i18n="credit"></p>
+    </section>
+
+    <section class="screen" data-screen="error" hidden aria-labelledby="error-title">
+      <h1 id="error-title" tabindex="-1" data-i18n="error.title">Something went wrong</h1>
+      <p class="lead" data-i18n="error.load"></p>
+      <button type="button" class="btn btn--primary" onclick="location.reload()" data-i18n="error.reload">Reload the page</button>
+    </section>
+
+    <!-- Intro and Result only. Links open in a new tab so the activity stays open. -->
+    <section class="site-footer" aria-labelledby="newsletter-title">
+      <div class="newsletter" id="newsletter">
+        <h2 class="newsletter__title" id="newsletter-title" data-i18n="news.title">Stay in touch with the WCRP Academy</h2>
+        <p data-i18n="news.lead">Climate science training and opportunities, in our quarterly newsletter.</p>
+        <button type="button" class="btn btn--primary" id="newsletter-open" aria-haspopup="dialog">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg><span data-i18n="news.open">Join the newsletter</span>
+        </button>
+        <p class="newsletter__done" id="newsletter-thanks" hidden>
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span data-i18n="news.thanks"></span>
+        </p>
+      </div>
+      <ul class="link-cards" role="list">
+        <li>
+          <a class="link-card" href="https://wcrp-academy.org/wcrp-future-leaders-programme/" target="_blank" rel="noopener">
+            <span class="link-card__icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-compass"/></svg></span>
+            <span class="link-card__title" data-i18n="links.flp">Future Leaders Programme</span>
+            <span class="link-card__text" data-i18n="links.flpText"></span>
+            <span class="link-card__more"><span data-i18n="links.flpMore">Find out more</span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-external"/></svg></span>
+            <span class="visually-hidden" data-i18n="newTab"> (opens in a new tab)</span>
+          </a>
+        </li>
+        <li>
+          <a class="link-card" href="https://wcrp-academy.org/catalogue/" target="_blank" rel="noopener">
+            <span class="link-card__icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-book"/></svg></span>
+            <span class="link-card__title" data-i18n="links.catalogue">Training catalogue</span>
+            <span class="link-card__text" data-i18n="links.catalogueText"></span>
+            <span class="link-card__more"><span data-i18n="links.catalogueMore">Browse training</span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-external"/></svg></span>
+            <span class="visually-hidden" data-i18n="newTab"> (opens in a new tab)</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Copyright band (Intro and Result), the same as the values card sort and wcrp-academy.org -->
+  <footer class="site-bottom">
+    <div class="site-bottom__inner">
+      <div class="site-bottom__brand">
+        <img class="site-bottom__logo" src="img/academy-logo-light.png" alt="WCRP Academy" width="133" height="48">
+        <p class="site-bottom__tagline" data-i18n="footer.tagline">A hub for climate science training</p>
+      </div>
+      <ul class="social" role="list" aria-label="WCRP Academy on social media" data-i18n-label="footer.social">
+        <li>
+          <a class="social__link" href="https://www.linkedin.com/company/wcrp-academy1/" target="_blank" rel="noopener" aria-label="WCRP Academy on LinkedIn (opens in a new tab)" data-i18n-label="footer.on" data-site="LinkedIn">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="social__link" href="https://www.facebook.com/profile.php?id=61568581633290" target="_blank" rel="noopener" aria-label="WCRP Academy on Facebook (opens in a new tab)" data-i18n-label="footer.on" data-site="Facebook">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-facebook"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="social__link" href="https://www.instagram.com/wcrpacademy/" target="_blank" rel="noopener" aria-label="WCRP Academy on Instagram (opens in a new tab)" data-i18n-label="footer.on" data-site="Instagram">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-instagram"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="social__link" href="https://www.youtube.com/@WCRPAcademy2021" target="_blank" rel="noopener" aria-label="WCRP Academy on YouTube (opens in a new tab)" data-i18n-label="footer.on" data-site="YouTube">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-youtube"/></svg>
+          </a>
+        </li>
+      </ul>
+      <p class="site-bottom__copy" data-i18n="footer.copy"></p>
+    </div>
+  </footer>
+
+  <dialog class="dialog" id="confirm-dialog" aria-labelledby="confirm-text">
+    <p id="confirm-text" data-i18n="intro.startOverQ"></p>
+    <div class="dialog__actions">
+      <button type="button" class="btn btn--ghost" value="cancel" id="confirm-cancel" data-i18n="intro.cancel">Cancel</button>
+      <button type="button" class="btn btn--danger" value="ok" id="confirm-ok" data-i18n="intro.startOverYes">Yes, start over</button>
+    </div>
+  </dialog>
+
+  <!--
+    Newsletter sign-up (Ken, 19 Nov 2026): the one place this app takes personal data. It goes straight to
+    MailerLite through the Apps Script, is never stored here or in the Sheet, and is never linked to wheel answers.
+  -->
+  <dialog class="sheet" id="nl-dialog" aria-labelledby="nl-title">
+    <div class="sheet__head">
+      <h2 id="nl-title" tabindex="-1" data-i18n="nl.title">Join the WCRP Academy newsletter</h2>
+      <button type="button" class="icon-btn icon-btn--plain" id="nl-close" aria-label="Close" data-i18n-label="nl.close">
+        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-close"/></svg>
+      </button>
+    </div>
+
+    <form class="sheet__form" id="nl-form" novalidate>
+      <div class="sheet__body">
+        <p class="sheet__intro" data-i18n="nl.intro"></p>
+        <p class="required-note"><span aria-hidden="true">*</span> <span data-i18n="nl.required">Required</span></p>
+
+        <div class="notice notice--error" id="nl-general" role="alert" hidden>
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg>
+          <p id="nl-general-text"></p>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label class="field__label" for="nl-first"><span data-i18n="nl.first">First name</span> <span class="req" aria-hidden="true">*</span></label>
+            <input class="input" id="nl-first" name="first_name" type="text" autocomplete="given-name" maxlength="60" required>
+            <p class="field__error" id="nl-first-error" hidden></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="nl-last"><span data-i18n="nl.last">Last name</span> <span class="req" aria-hidden="true">*</span></label>
+            <input class="input" id="nl-last" name="last_name" type="text" autocomplete="family-name" maxlength="60" required>
+            <p class="field__error" id="nl-last-error" hidden></p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="nl-email"><span data-i18n="nl.email">Email address</span> <span class="req" aria-hidden="true">*</span></label>
+          <input class="input" id="nl-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" maxlength="254" required>
+          <p class="field__error" id="nl-email-error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="nl-country" data-i18n="nl.country">Country</label>
+          <select class="input input--select" id="nl-country" name="country" autocomplete="country-name">
+            <option value="" data-i18n="nl.countryPick">Select your country</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="nl-language" data-i18n="nl.language">Language</label>
+          <select class="input input--select" id="nl-language" name="language">
+            <option value="" data-i18n="nl.languagePick">Select a language</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="nl-affiliation" data-i18n="nl.affiliation">Affiliation or institution</label>
+          <input class="input" id="nl-affiliation" name="affiliation" type="text" autocomplete="organization" maxlength="120">
+        </div>
+
+        <fieldset class="check-group">
+          <legend class="field__label" data-i18n="nl.roles">Are you a/an…</legend>
+          <div class="check-group__items" id="nl-roles"></div>
+        </fieldset>
+
+        <fieldset class="check-group">
+          <legend class="field__label" data-i18n="nl.topics">What topics are you interested in?</legend>
+          <div class="check-group__items" id="nl-topics"></div>
+        </fieldset>
+
+        <!-- Spam trap: hidden from people and screen readers; bots tend to fill it -->
+        <div class="hp" aria-hidden="true">
+          <label for="nl-website">Website</label>
+          <input id="nl-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label class="check-line check-line--consent">
+            <input type="checkbox" id="nl-consent" name="consent" required>
+            <span><span data-i18n="nl.consentBefore">I agree to receive communications from the WCRP Academy and accept the</span>
+              <a href="https://wcrp-academy.org/privacy/" target="_blank" rel="noopener"><span data-i18n="nl.consentLink">data privacy statement</span><span class="visually-hidden" data-i18n="newTab"> (opens in a new tab)</span></a><span data-i18n="nl.consentAfter">.</span>
+              <span class="req" aria-hidden="true">*</span></span>
+          </label>
+          <p class="field__error" id="nl-consent-error" hidden></p>
+        </div>
+      </div>
+
+      <div class="sheet__foot">
+        <button type="submit" class="btn btn--primary btn--block" id="nl-submit" data-i18n="nl.submit">Subscribe</button>
+      </div>
+    </form>
+
+    <div class="sheet__panel" id="nl-done" hidden>
+      <span class="sheet__panel-icon sheet__panel-icon--ok" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-check"/></svg></span>
+      <p class="sheet__panel-title" id="nl-done-title" tabindex="-1" data-i18n="nl.doneTitle">Thank you for signing up!</p>
+      <p data-i18n="nl.doneText">Look out for the WCRP Academy newsletter in your inbox.</p>
+      <button type="button" class="btn btn--secondary btn--block" data-nl-close data-i18n="nl.close">Close</button>
+    </div>
+
+    <div class="sheet__panel" id="nl-offline" hidden>
+      <span class="sheet__panel-icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-alert"/></svg></span>
+      <p class="sheet__panel-title" id="nl-offline-title" tabindex="-1" data-i18n="nl.offlineTitle">Sign-up needs the internet</p>
+      <p data-i18n="nl.offlineText"></p>
+      <button type="button" class="btn btn--secondary btn--block" data-nl-close data-i18n="nl.close">Close</button>
+    </div>
+  </dialog>
+
+  <p class="visually-hidden" id="announce" aria-live="polite"></p>
+</body>
+</html>
