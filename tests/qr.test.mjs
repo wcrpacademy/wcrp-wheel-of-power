@@ -7,6 +7,7 @@ import { joinUrl, joinSvg } from '../scripts/make-qr.mjs';
 test('qr/join.svg encodes config.js publicUrl', async () => {
   const url = joinUrl();
   assert.match(url, /^https:\/\/[\w.-]+\/$/);
+  const lf = (s) => s.replace(/\r\n/g, '\n'); // Git on Windows may check the file out with CRLF
   const committed = readFileSync(new URL('../qr/join.svg', import.meta.url), 'utf8');
-  assert.equal(committed, await joinSvg(url), `qr/join.svg is out of date for ${url}: run npm run qr`);
+  assert.equal(lf(committed), lf(await joinSvg(url)), `qr/join.svg is out of date for ${url}: run npm run qr`);
 });
