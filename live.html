@@ -34,7 +34,10 @@
     <section class="live__body" aria-live="polite">
       <div id="waiting" class="live__waiting" hidden>
         <p class="live__big">Results appear once <span id="min-group">5</span> people have finished.</p>
-        <p class="live__join">Join at <strong id="join-url"></strong></p>
+        <button class="qr-btn qr-btn--big" type="button" data-qr-open aria-haspopup="dialog" title="Show the QR code full screen">
+          <img class="qr" src="qr/join.svg" alt="QR code to join the Wheel of Power. Show it full screen" width="320" height="320">
+        </button>
+        <p class="live__join">Scan, or go to <strong class="join-url" id="join-url"></strong></p>
       </div>
 
       <div id="results" hidden>
@@ -54,6 +57,13 @@
     </section>
 
     <footer class="live__foot">
+      <!-- Join corner once results show (the waiting screen has the big QR) -->
+      <div class="live__corner" id="corner-join" hidden>
+        <button class="qr-btn " type="button" data-qr-open aria-haspopup="dialog" title="Show the QR code full screen">
+          <img class="qr" src="qr/join.svg" alt="QR code to join the Wheel of Power. Show it full screen" width="96" height="96">
+        </button>
+        <p>Scan, or go to<br><strong class="join-url"></strong></p>
+      </div>
       <div class="live__toggle" role="group" aria-label="View">
         <button type="button" class="toggle" id="show-bands" aria-pressed="true">Bands</button>
         <button type="button" class="toggle" id="show-sections" aria-pressed="false">Sections</button>
@@ -62,5 +72,13 @@
       <p class="live__credit">Wheel adapted from Sylvia Duckworth’s Wheel of Power/Privilege (adapted from ccrweb.ca).</p>
     </footer>
   </main>
+
+  <!-- Full-screen QR: click a QR to open; click anywhere or press Esc to close (polling carries on underneath) -->
+  <dialog class="qr-full" id="qr-full" aria-labelledby="qr-full-title">
+    <h2 class="qr-full__title" id="qr-full-title">Scan to join</h2>
+    <img class="qr-full__img" src="qr/join.svg" alt="QR code to join the Wheel of Power" width="200" height="200">
+    <p class="qr-full__url">or go to <strong class="join-url"></strong></p>
+    <p class="qr-full__hint">Click anywhere or press Esc to close</p>
+  </dialog>
 </body>
 </html>

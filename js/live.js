@@ -23,12 +23,33 @@ async function init() {
   const name = typeof cfg.eventName === 'object' && cfg.eventName ? cfg.eventName.en : cfg.eventName;
   $('#live-sub').textContent = [name, `Session ${session}`].filter(Boolean).join(' · ');
   $('#min-group').textContent = MIN_GROUP;
-  $('#join-url').textContent = cfg.publicUrl || location.host;
+  setupJoin();
   $('#show-bands').addEventListener('click', () => setView('bands'));
   $('#show-sections').addEventListener('click', () => setView('sections'));
   await poll();
   setInterval(poll, POLL_MS);
   setInterval(renderStatus, 1000);
+}
+
+/** Join address and QR. The QR (qr/join.svg, made by `npm run qr` from publicUrl) opens the default
+ *  session; when this screen shows another one (?session=…), the QR is hidden and the address carries it. */
+function setupJoin() {
+  const host = String(cfg.publicUrl || location.host).replace(/^https?:\/\//, '').replace(/\/+$/, '');
+  const ownSession = session !== (cfg.session || 'WS1');
+  const url = ownSession ? `${host}/?session=${encodeURIComponent(session)}` : host;
+  for (const node of document.querySelectorAll('.join-url')) node.textContent = url;
+
+  const buttons = [...document.querySelectorAll('[data-qr-open]')];
+  const hideQr = () => buttons.forEach((b) => (b.hidden = true));
+  if (ownSession) hideQr();
+  for (const img of document.querySelectorAll('[data-qr-open] img')) img.addEventListener('error', hideQr);
+
+  const dlg = $('#qr-full');
+  if (typeof dlg.showModal !== 'function') return; // very old browser: the small QR still works
+  let opener = null;
+  for (const b of buttons) b.addEventListener('click', () => { opener = b; dlg.showModal(); });
+  dlg.addEventListener('click', () => dlg.close());
+  dlg.addEventListener('close', () => opener && opener.focus());
 }
 
 function setView(v) {
@@ -62,6 +83,7 @@ function draw() {
   const enough = last.submitted >= MIN_GROUP;
   $('#waiting').hidden = enough;
   $('#results').hidden = !enough;
+  $('#corner-join').hidden = !enough;
   if (!enough) return;
 
   $('#group-pct').textContent = typeof last.groupPct === 'number' ? `${last.groupPct.toFixed(1)}%` : '–';

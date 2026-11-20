@@ -32,6 +32,37 @@ test('/live waits for 5 people, then shows the doc numbers and no individuals', 
   expect(html).not.toContain('seed-');
 });
 
+test('/live join QR: big while waiting, full screen on click, small in the corner with results', async ({ page, request }) => {
+  await page.goto('/live');
+  const big = page.locator('#waiting [data-qr-open]');
+  await expect(big).toBeVisible();
+  await expect(big.locator('img')).toHaveAttribute('src', 'qr/join.svg');
+  const svg = await request.get('/qr/join.svg');
+  expect(svg.ok()).toBe(true);
+  expect(svg.headers()['content-type']).toContain('image/svg+xml');
+  await expect.poll(() => big.locator('img').evaluate((img) => img.complete)).toBe(true);
+  expect((await big.locator('img').boundingBox()).width).toBeGreaterThan(150);
+  await expect(page.locator('#waiting .join-url')).toHaveText('wheelpower.wcrp-academy.org');
+
+  await big.click();
+  const full = page.locator('#qr-full');
+  await expect(full).toBeVisible();
+  await expect(full).toContainText('Scan to join');
+  await page.keyboard.press('Escape');
+  await expect(full).toBeHidden();
+  await expect(big).toBeFocused();
+
+  await seedDoc(request);
+  await page.reload();
+  await expect(page.locator('#results')).toBeVisible();
+  await expect(page.locator('#corner-join [data-qr-open]')).toBeVisible();
+
+  // Another session on this screen: no QR (it would open the default session), the address carries the session
+  await page.goto('/live?session=TEST1');
+  await expect(page.locator('#waiting [data-qr-open]')).toBeHidden();
+  await expect(page.locator('#waiting .join-url')).toHaveText('wheelpower.wcrp-academy.org/?session=TEST1');
+});
+
 test('/admin: PIN, report, CSV without pid, delete by code', async ({ page, request }) => {
   await seedDoc(request);
   // One real participant to delete later

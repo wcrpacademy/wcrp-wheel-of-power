@@ -8,17 +8,19 @@
   "scripts": {
     "preview": "node tests/serve.mjs",
     "test": "npm run test:unit && playwright test",
-    "test:unit": "node --test tests/scoring.test.mjs tests/apps-script.test.mjs",
+    "test:unit": "node --test tests/scoring.test.mjs tests/apps-script.test.mjs tests/qr.test.mjs",
     "test:e2e": "playwright test",
     "lint": "eslint .",
     "gs": "node scripts/sync-scoring-gs.mjs",
-    "pin": "node scripts/hash-pin.mjs"
+    "pin": "node scripts/hash-pin.mjs",
+    "qr": "node scripts/make-qr.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",
     "@eslint/js": "9.39.5",
     "@playwright/test": "1.64.1",
     "eslint": "9.39.5",
-    "globals": "17.14.0"
+    "globals": "17.14.0",
+    "qrcode": "1.5.4"
   }
 }

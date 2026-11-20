@@ -54,6 +54,7 @@ ol, ul { padding: 0; }
   max-width: 64rem; margin: 0 auto; padding: 12px var(--gutter);
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
 }
+.brand { display: block; flex: none; border-radius: 6px; }
 .brand__logo { display: block; height: 36px; width: auto; }
 .topbar__end { display: flex; align-items: center; gap: 12px; margin-left: auto; }
 .topbar__progress { font-weight: 700; font-size: 0.9375rem; white-space: nowrap; }

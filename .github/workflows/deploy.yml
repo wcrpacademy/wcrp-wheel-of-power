@@ -89,7 +89,7 @@ jobs:
         run: |
           mkdir dist
           cp index.html live.html admin.html config.js dist/
-          cp -r css js fonts img data dist/
+          cp -r css js fonts img data qr dist/
           find dist -name '.*' -print -delete
           echo "Uploading:" && find dist -type f | sort
 

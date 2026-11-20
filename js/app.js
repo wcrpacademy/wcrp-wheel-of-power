@@ -128,8 +128,10 @@ function renderIntro() {
   wheels.intro.update({ answers: SECTION_KEYS.map(() => null) });
   $('#consent').checked = Boolean(state.consent);
   const started = state.consent && state.answers.some((a) => a !== null);
-  $('#start-btn span').textContent = started ? t('intro.resume') : t('intro.start');
-  $('#start-over').hidden = !started;
+  // Already submitted (back here through the logo): the button returns to their wheel, and
+  // "Start over" stays hidden so one phone can't send a second set of answers.
+  $('#start-btn span').textContent = t(state.submitted ? 'intro.seeWheel' : started ? 'intro.resume' : 'intro.start');
+  $('#start-over').hidden = !started || state.submitted;
   $('#no-store').hidden = canStore;
 }
 
@@ -511,6 +513,10 @@ function bindEvents() {
     }
     state.consent = true;
     persist();
+    if (state.submitted) {
+      go('result');
+      return;
+    }
     if (canSend() && !state.sent.join) enqueue(joinId(), { type: 'join', session: state.session, pid: state.pid });
     if (state.answers.every((a) => a !== null)) go('review');
     else {
@@ -527,6 +533,12 @@ function bindEvents() {
       state.consent = false;
       persist();
     }
+  });
+  // Header logo: the start screen, without reloading (answers and place are kept)
+  $('#home-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    if (location.hash === '#deep') history.replaceState(null, '', location.pathname + location.search);
+    if (state.step !== 'intro') go('intro');
   });
   $('#start-over').addEventListener('click', () => confirmDialog(() => {
     state = resetState(state, state.session);

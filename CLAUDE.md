@@ -24,7 +24,12 @@ A one-time workshop web app. Participants place themselves on a 12-section Wheel
 
 - `npm run preview`: local site + the real Apps Script on a fake Sheet, on http://127.0.0.1:4173 (`/live`, `/admin`, PIN 1234). Add the doc's 10 example people: `node tests/serve.mjs 4173 --seed`.
 - `npm test`: scoring and Apps Script unit tests, then Playwright (flow, views, axe).
-- `npm run lint`, `npm run gs`, `npm run pin`.
+- `npm run lint`, `npm run gs`, `npm run pin`, `npm run qr` (after changing `publicUrl`).
+
+## Hosting
+
+- Live at https://wheelpower.wcrp-academy.org (Infomaniak static, behind Cloudflare). GitHub repo `wcrpacademy/wcrp-wheel-of-power` (renamed from `wheel-power`). A push to `main` runs the tests and deploys. Details: README "Live site".
+- The server's `.htaccess` and the Cloudflare cache rule are managed by hand, outside the repo.
 
 ## Git
 

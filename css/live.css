@@ -37,6 +37,38 @@ h1, p, dl, dd { margin: 0; }
 .live__join { font-size: clamp(1.25rem, 3.5vh, 2.5rem); color: #C9CED4; }
 .live__join strong { color: var(--green); }
 
+/* Join QR: big while waiting, small in the footer corner once results show; either opens it full screen */
+.qr-btn {
+  display: block; padding: 0; border: 0; border-radius: 1rem;
+  background: none; cursor: zoom-in; transition: transform 0.2s ease;
+}
+.qr-btn:hover { transform: scale(1.04); }
+.qr-btn:focus-visible { outline: 0.3rem solid var(--green); outline-offset: 0.3rem; } /* green is fine on navy */
+.qr { display: block; padding: 0.4rem; border-radius: 0.8rem; background: var(--white); }
+.qr-btn--big { align-self: center; }
+.qr-btn--big .qr { width: clamp(160px, 32vh, 360px); height: auto; aspect-ratio: 1; }
+.live__corner { display: flex; align-items: center; gap: 16px; }
+.live__corner .qr { width: clamp(72px, 11vh, 128px); height: auto; aspect-ratio: 1; }
+.live__corner p { font-size: clamp(0.95rem, 2vh, 1.3rem); }
+.live__corner strong { color: var(--white); font-size: 1.15em; }
+
+/* Full-screen QR, sized by the screen's short side so it fills a projector */
+.qr-full {
+  width: 100vw; height: 100vh; max-width: none; max-height: none;
+  margin: 0; padding: 3vmin; border: 0;
+  background: var(--navy); color: var(--paper); cursor: zoom-out;
+}
+.qr-full[open] { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.5vmin; }
+.qr-full::backdrop { background: var(--navy); }
+.qr-full__title { margin: 0; color: var(--white); font-size: 6vmin; font-weight: 700; letter-spacing: -0.02em; }
+.qr-full__img { width: 62vmin; height: 62vmin; padding: 2.5vmin; border-radius: 2.5vmin; background: var(--white); }
+.qr-full__url { font-size: 4.2vmin; }
+.qr-full__url strong { color: var(--white); }
+.qr-full__hint { font-size: 2vmin; opacity: 0.7; }
+@media (prefers-reduced-motion: reduce) {
+  .qr-btn, .qr-btn:hover { transition: none; transform: none; }
+}
+
 .live__headline { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; margin-bottom: 2vh; }
 .live__headline p:first-child { display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap; }
 .live__label { font-size: clamp(1.25rem, 3vh, 2rem); color: #C9CED4; font-weight: 600; }

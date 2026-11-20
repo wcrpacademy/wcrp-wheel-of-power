@@ -11,6 +11,7 @@ const LANG_KEY = 'wcrp-wheel-lang';
 const STRINGS = {
   en: {
     pageTitle: 'Wheel of Power · WCRP Academy',
+    homeLink: 'Wheel of Power: start page',
     loading: 'Loading…',
     langGroup: 'Language',
     skip: 'Skip to content',
@@ -33,6 +34,7 @@ const STRINGS = {
     'consent.error': 'Tick the box to agree before you start.',
     'intro.start': 'Start',
     'intro.resume': 'Continue',
+    'intro.seeWheel': 'See my wheel',
     'intro.startOver': 'Start over',
     'intro.startOverQ': 'Start over? This clears your answers on this phone.',
     'intro.startOverYes': 'Yes, start over',
@@ -182,6 +184,7 @@ const STRINGS = {
 
   fr: {
     pageTitle: 'Roue du pouvoir · WCRP Academy',
+    homeLink: 'Roue du pouvoir : page d’accueil',
     loading: 'Chargement…',
     langGroup: 'Langue',
     skip: 'Aller au contenu',
@@ -204,6 +207,7 @@ const STRINGS = {
     'consent.error': 'Cochez la case pour donner votre accord avant de commencer.',
     'intro.start': 'Commencer',
     'intro.resume': 'Continuer',
+    'intro.seeWheel': 'Voir ma roue',
     'intro.startOver': 'Recommencer',
     'intro.startOverQ': 'Recommencer ? Vos réponses sur ce téléphone seront effacées.',
     'intro.startOverYes': 'Oui, recommencer',

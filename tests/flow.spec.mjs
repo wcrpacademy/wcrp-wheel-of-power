@@ -190,3 +190,27 @@ test('answers wait on the phone while offline and are sent later', async ({ page
   await expect(page.locator('#save-status')).toHaveText('Answers sent');
   expect((await sheet(request)).responses).toHaveLength(1);
 });
+
+test('the header logo goes back to the start screen and keeps the answers; after submitting it leads back to the wheel', async ({ page, request }) => {
+  await start(page);
+  await answer(page, 2);
+  await answer(page, 3);
+  const home = page.getByRole('link', { name: 'Wheel of Power: start page' });
+  await home.click();
+  await expect(page.locator('[data-screen="intro"]')).toBeVisible();
+  await page.getByRole('button', { name: 'Continue' }).click();
+  await expect(page.locator('#q-title')).toHaveText('Ability'); // third section, where they stopped
+
+  await home.click();
+  await page.getByRole('button', { name: 'Continue' }).click();
+  await answerAll(page, Array(10).fill(2));
+  await page.locator('#submit-btn').click();
+  await expect(page.locator('[data-screen="result"]')).toBeVisible();
+
+  // After submitting: no "Start over", and the button returns to the wheel without sending again
+  await home.click();
+  await expect(page.locator('#start-over')).toBeHidden();
+  await page.getByRole('button', { name: 'See my wheel' }).click();
+  await expect(page.locator('[data-screen="result"]')).toBeVisible();
+  expect((await sheet(request)).responses).toHaveLength(1);
+});

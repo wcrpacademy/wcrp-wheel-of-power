@@ -28,7 +28,7 @@ const configSession = async () => {
 };
 
 // Same files the deploy uploads. Everything else is a 404.
-const ALLOW = /^\/(index\.html|live\.html|admin\.html|config\.js|data\/[\w.-]+\.json|(css|js|fonts|img)\/[\w.-]+)$/;
+const ALLOW = /^\/(index\.html|live\.html|admin\.html|config\.js|data\/[\w.-]+\.json|(css|js|fonts|img|qr)\/[\w.-]+)$/;
 const ROUTES = { '/': '/index.html', '/live': '/live.html', '/admin': '/admin.html' };
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
